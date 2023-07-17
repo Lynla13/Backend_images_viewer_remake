@@ -20,6 +20,12 @@ async function update(id, post_id, username, return_user, comment) {
     return Promise.resolve(await BaseModel.update(table, val, condition));
 }
 
+async function temDel(id, is_deleted) {
+    let val = 'is_deleted = "' + is_deleted + '"';
+    let condition = 'id = "' + id + '"';
+    return Promise.resolve(await BaseModel.update(table, val, condition));
+}
+
 async function del(id) {
     let condition = 'id = "' + id + '"';
     return Promise.resolve(await BaseModel.deteleValue(table, condition));
@@ -28,5 +34,6 @@ module.exports = {
     create,
     readByPost_id,
     update,
+    temDel,
     del,
 }
