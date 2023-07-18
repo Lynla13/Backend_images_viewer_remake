@@ -1,11 +1,11 @@
 import { Callbacks } from "jquery";
 import BaseModel from "/Base";
 
-let table = 'user';
+let table = 'profile';
 
-async function create(username, pass, email, level) {
-    let content = 'username, pass, email, level';
-    let val = "'" + username + "','" + pass + "','" + email + "','" + level + "'";
+async function create(username, name, image_url, bkg_url) {
+    let content = 'username, name, image_url, bkg_url';
+    let val = "'" + username + "','" + name + "','" + image_url + "','" + bkg_url + "'";
     return Promise.resolve(await BaseModel.insert(table, content, val));
 }
 
@@ -14,14 +14,9 @@ async function readByUsername(username) {
     return Promise.resolve(await BaseModel.getByCondition(table, condition));
 }
 
-async function readByUsernameAndPass(username, pass) {
-    let condition = 'username = "' + username + '" AND pass = "' + pass + '"';
-    return Promise.resolve(await BaseModel.getByCondition(table, condition));
-}
 
-
-async function update(username, pass, email, level) {
-    let val = 'pass = "' + pass + '", email = "' + email + '" , level = "' + level + '"';
+async function update(username, name, image_url, bkg_url) {
+    let val = 'name = "' + name + '", image_url = "' + image_url + '" , bkg_url = "' + bkg_url + '"';
     let condition = 'username = "' + username + '"';
     return Promise.resolve(await BaseModel.update(table, val, condition));
 }
@@ -40,7 +35,6 @@ async function del(username) {
 module.exports = {
     create,
     readByUsername,
-    readByUsernameAndPass,
     update,
     temDel,
     del,
