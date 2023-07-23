@@ -1,4 +1,3 @@
-import { Callbacks } from "jquery";
 import BaseModel from "./Base";
 
 let table = 'like';

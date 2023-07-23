@@ -1,5 +1,4 @@
-import { Callbacks } from "jquery";
-import BaseModel from "/Base";
+import BaseModel from "./Base";
 
 let table = 'post';
 
@@ -15,12 +14,12 @@ async function readByUsername(username) {
     return Promise.resolve(await BaseModel.getByCondition(table, condition));
 }
 
-async function readById(id) {
-    let condition = 'id = "' + id + '"';
+async function readByPost_content(post_content) {
+    let condition = 'post_content = "' + post_content + '"';
     return Promise.resolve(await BaseModel.getByCondition(table, condition));
 }
 
-async function update(id, username, post_content) {
+async function update(username, post_content) {
     let val = 'username = "' + username + '", post_content = "' + post_content + '"';
     let condition = 'id = "' + id + '"';
     return Promise.resolve(await BaseModel.update(table, val, condition));
@@ -40,7 +39,7 @@ async function del(id) {
 module.exports = {
     create,
     readByUsername,
-    readById,
+    readByPost_content,
     update,
     temDel,
     del,

@@ -21,10 +21,17 @@
         "@babel/core": "^7.22.8",
         "@babel/node": "^7.22.6",
         "@babel/preset-env": "^7.22.7",
+        "akaneko": "^5.2.8",
+        "anime-images-npm": "^1.0.0-n",
+        "anime-zee": "^1.0.1",
         "body-parser": "^1.20.2",
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
+        "jquery": "^3.7.0",
+        "justreddit": "^4.2.0",
         "mysql2": "^3.5.1",
-        "nodemon": "^3.0.1"
+        "nekos-fun": "^1.1.2",
+        "nodemon": "^3.0.1",
+        "reddit": "^1.2.1"
     }
 }

@@ -1,6 +1,6 @@
 import Image from "./Image"
 import Post from "./Post"
-import User from ".User"
+import User from "./Users"
 import Comment from "./Comment"
 import Like from "./Like"
 import Nofi from "./Nofi"
