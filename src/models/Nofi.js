@@ -9,8 +9,8 @@ async function create(username, nofi) {
     return Promise.resolve(await BaseModel.insert(table, content, val));
 }
 
-async function readByUsername(username) {
-    let condition = 'username = "' + username + '"';
+async function readByUsername(username, limit, offset) {
+    let condition = 'username = "' + username + '" LIMIT ' + limit + ' OFFSET ' + offset + '';
     return Promise.resolve(await BaseModel.getByCondition(table, condition));
 }
 

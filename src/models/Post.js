@@ -3,26 +3,25 @@ import BaseModel from "./Base";
 let table = 'post';
 
 
-async function create(username, post_content) {
-    let content = 'username, post_content';
-    let val = "'" + username + "','" + post_content + "'";
+async function create(username, id) {
+    let content = 'username, id';
+    let val = "'" + username + "','" + id + "'";
     return Promise.resolve(await BaseModel.insert(table, content, val));
 }
 
-async function readByUsername(username) {
-    let condition = 'username = "' + username + '"';
+async function readByUsername(username, offset = 1, limit = BaseModel.page_limit) {
+    let condition = 'username = "' + username + '" LIMIT ' + limit + ' OFFSET ' + offset + '';
     return Promise.resolve(await BaseModel.getByCondition(table, condition));
 }
 
-async function readByPost_content(post_content) {
-    let condition = 'post_content = "' + post_content + '"';
-    return Promise.resolve(await BaseModel.getByCondition(table, condition));
-}
+// async function readByKeyWords(keywords, limit, offset) {
+//     let condition = 'po = "' + username + '" LIMIT ' + limit + ' OFFSET ' + offset + '';
+//     return Promise.resolve(await BaseModel.getByCondition(table, condition));
+// }
 
-async function update(username, post_content) {
-    let val = 'username = "' + username + '", post_content = "' + post_content + '"';
+async function readById(id) {
     let condition = 'id = "' + id + '"';
-    return Promise.resolve(await BaseModel.update(table, val, condition));
+    return Promise.resolve(await BaseModel.getByCondition(table, condition));
 }
 
 async function temDel(id, is_deleted) {
@@ -39,8 +38,7 @@ async function del(id) {
 module.exports = {
     create,
     readByUsername,
-    readByPost_content,
-    update,
+    readById,
     temDel,
     del,
 }

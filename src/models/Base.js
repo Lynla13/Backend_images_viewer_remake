@@ -1,6 +1,8 @@
 import { Callbacks } from "jquery";
 import pool from "../configs/connect_db";
-//import connection from "../model/baseModel";
+
+//Set PageLimit
+var page_limit = 50
 
 // * Important promise function
 function dbQuery(databaseQuery) {
@@ -37,7 +39,7 @@ function insert(table, content, value) {
     pool.query('INSERT INTO ' + table + ' (' + content + ')  VALUES (' + value + ')');
 }
 // Read 
-async function getAll(table, orderBy = 'joinday desc', limit = 8, offset = 1) {
+async function getAll(table, orderBy = 'create_at desc', limit = page_limit, offset = 1) {
     let result = [];
     return result = await dbQuery('SELECT *from ' + table + ' ORDER BY ' + orderBy + ' limit ' + limit + ' OFFSET ' + offset + '');
 }
@@ -68,7 +70,6 @@ function update(table, value, condition) {
     WHERE ` + condition + `;`)
 }
 
-
 //Delete
 function removeV(table, condi) {
     pool.query(`DELETE FROM ` + table + ` WHERE ` + condi + ``)
@@ -77,6 +78,8 @@ function removeV(table, condi) {
 function removeAll(table) {
     pool.query(`DELETE FROM ` + table + ``)
 }
+
+
 
 module.exports = {
     createDatabase,

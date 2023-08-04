@@ -7,6 +7,7 @@ import Nofi from "./Nofi"
 import PostTag from "./PostTag"
 import Tag from "./Tag"
 import Profile from "./Profile"
+import PostDetail from "./PostDetail"
 
 
 const Model = {
@@ -18,7 +19,8 @@ const Model = {
     Nofi,
     PostTag,
     Tag,
-    Profile
+    Profile,
+    PostDetail
 }
 
 export default Model;

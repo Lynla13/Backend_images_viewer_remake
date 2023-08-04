@@ -5,7 +5,7 @@ let table = 'post_tag';
 
 async function create(post_id, tag_id) {
     let content = 'post_id, tag_id';
-    let val = "'" + username + "','" + nofi + "'";
+    let val = "'" + post_id + "','" + tag_id + "'";
     return Promise.resolve(await BaseModel.insert(table, content, val));
 }
 

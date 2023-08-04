@@ -1,10 +1,24 @@
 import { query } from "express";
 import Model from "../models/index";
 
+
+async function create_post(username, post_id, image_content, image_url, title = "", detail = "") {
+    try {
+        Model.Post.create(username, post_id);
+        Model.Image.create(post_id, image_content, image_url);
+        Model.PostDetail.create(post_id, title, detail);
+        console.log("Insert Successfull");
+
+    } catch (e) {
+        console.log("Error");
+    }
+}
+
+// Create full Post
+
 async function create(req, res) {
     let username = req.params.username;
     let post_content = req.params.post_content;
-
     try {
         Model.Post.create(username, post_content);
         res.send('Insert Successfull');
@@ -12,10 +26,9 @@ async function create(req, res) {
         res.send(e);
     }
 }
-
+// Read full post
 async function readByUsername(req, res) {
     let username = req.params.username;
-
     try {
         let content = await Model.Post.readByUsername(username);
         res.send(content);
@@ -26,7 +39,6 @@ async function readByUsername(req, res) {
 
 async function readById(req, res) {
     let id = req.params.id;
-
     try {
         let content = await Model.Post.readById(id);
         res.send(content);
@@ -35,18 +47,6 @@ async function readById(req, res) {
     }
 }
 
-async function update(req, res) {
-    let id = req.params.id;
-    let username = req.params.username;
-    let post_content = req.params.post_content;
-
-    try {
-        Model.Post.update(id, username, post_content);
-        return res.send('Update Successfull');
-    } catch (e) {
-        res.send(e);
-    }
-}
 
 async function temDel(req, res) {
     let id = req.params.id;
@@ -73,9 +73,9 @@ async function del(req, res) {
 
 module.exports = {
     create,
+    create_post,
     readByUsername,
     readById,
-    update,
     temDel,
     del
 }
